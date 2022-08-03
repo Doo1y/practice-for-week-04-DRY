@@ -1,47 +1,35 @@
+
+const comparator1 = (a, b) => a > b;
+const comparator2 = (a, b) => a < b;
+
+const compareTwo = (arr, comparator, callBack) => {
+  if (comparator(arr[0], arr[1])) return callBack(arr[0]);
+  else return callBack(arr[1]);
+}
+
 function multiplyBiggerNumByTwo(num1, num2) {
-  let bigNum;
-  if (num1 > num2) {
-    bigNum = num1;
-    return bigNum * 2;
-  } else {
-    bigNum = num2;
-    return bigNum * 2;
-  }
+  let callBack =  bigNum => bigNum * 2;
+
+  return compareTwo([num1, num2], comparator1, callBack);
 }
 
 function divideBiggerNumByThree(num1, num2) {
-  let bigNum;
-  if (num1 > num2) {
-    bigNum = num1;
-    return bigNum / 3;
-  } else {
-    bigNum = num2;
-    return bigNum / 3;
-  }
+  let callBack = bigNum => bigNum / 3;
+
+  return compareTwo([num1, num2], comparator1, callBack);
 }
 
 function eatMostTacos(sum1, sum2) {
-  let bigNum;
-  if (sum1 > sum2) {
-    bigNum = sum1;
-    return `I ate ${bigNum} tacos.`;
-  } else {
-    bigNum = sum2;
-    return `I ate ${bigNum} tacos.`;
-  }
+  let callBack = bigNum => `I ate ${bigNum} tacos.`;
+
+  return compareTwo([sum1, sum2], comparator1, callBack);
 }
 
 function adoptSmallerDog(weight1, weight2) {
-  let smallDog;
-  if (weight1 < weight2) {
-    smallDog = weight1;
-    return `I adopted a dog that weighs ${smallDog} pounds.`;
-  } else {
-    smallDog = weight2;
-    return `I adopted a dog that weighs ${smallDog} pounds.`;
-  }
-}
+  let callBack = smallDog => `I adopted a dog that weighs ${smallDog} pounds.`;
 
+  return compareTwo([weight1, weight2], comparator2, callBack);
+}
 
 /**************************************************************************/
 /* DO NOT CHANGE THE CODE BELOW */
